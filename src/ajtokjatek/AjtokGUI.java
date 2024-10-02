@@ -43,7 +43,7 @@ public class AjtokGUI extends javax.swing.JFrame {
         txfKincsVagyNemKincs2 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtaStatisztika1 = new javax.swing.JTextArea();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnUjJatek = new javax.swing.JToggleButton();
 
         btnMasodikAjto1.setText("2");
 
@@ -75,7 +75,7 @@ public class AjtokGUI extends javax.swing.JFrame {
         txtaStatisztika1.setRows(5);
         jScrollPane3.setViewportView(txtaStatisztika1);
 
-        jToggleButton1.setText("új játék");
+        btnUjJatek.setText("új játék");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,7 +116,7 @@ public class AjtokGUI extends javax.swing.JFrame {
                         .addComponent(btnNemCsere))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnUjJatek, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,7 +148,7 @@ public class AjtokGUI extends javax.swing.JFrame {
                     .addComponent(txfKincsVagyNemKincs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txfKincsVagyNemKincs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txfKincsVagyNemKincs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1))
+                    .addComponent(btnUjJatek))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -208,13 +208,13 @@ public class AjtokGUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnMasodikAjto;
     private javax.swing.JToggleButton btnMasodikAjto1;
     private javax.swing.JButton btnNemCsere;
+    private javax.swing.JToggleButton btnUjJatek;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField txfKincsVagyNemKincs;
     private javax.swing.JTextField txfKincsVagyNemKincs1;
     private javax.swing.JTextField txfKincsVagyNemKincs2;
