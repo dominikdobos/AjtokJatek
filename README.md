@@ -11,6 +11,8 @@ A user cserélhet de nem muszáj, ezek után kiderül, hogy mit kap.
   pl.:5 cseréből vagy 5 nem cseréből hányszor pontot kapott a user?
   Nem áll le a program futása egy nyerés után a statisztika miatt!
 
+A játék menete elképzeléseim szerint a következő.
+
 ![ajtoGui1](https://github.com/user-attachments/assets/8b221fa9-caf9-47a6-81af-4a4134db511d)
 ![ajtoGui2](https://github.com/user-attachments/assets/988d5126-6cdf-4ae3-a09c-04a45c74b8f9)
 ![ajtoGui3](https://github.com/user-attachments/assets/e76c55a0-8f16-4bd0-9523-2e23afda6625)
