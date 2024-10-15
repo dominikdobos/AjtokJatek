@@ -1,39 +1,96 @@
 package nezet;
 
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
+
 public class AjtokGUI extends javax.swing.JFrame {
-    private int kivalasztottIndex = -1;
-    
+
+    private String jatekSzoveg;
+
     public AjtokGUI() {
         initComponents();
-        jatekKiiras("Válassz egy ajtót!");
+        jatekAlap();
+    }
+
+    public JToggleButton getElsoAjto() {
+        return btnElsoAjto;
+    }
+
+    public JToggleButton getMasodikAjto() {
+        return btnMasodikAjto;
+    }
+
+    public JToggleButton getHarmadikAjto() {
+        return btnHarmadikAjto;
+    }
+
+    public JButton getCserelGomb() {
+        return btnCsere;
+    }
+
+    public JButton getNemCserelGomb() {
+        return btnNemCsere;
+    }
+
+    public JButton getUjJatek() {
+        return btnUjJatek;
     }
     
-    public void jatekKiiras(String szoveg) {
-        szoveg = txtaJatek.getText() + "\n" + szoveg;
-        txtaJatek.setText(szoveg);
+    public void jatekAlap() {
+        jatekSzoveg = "Válassz egy ajtót!\n";
+        txtaJatek.setText(jatekSzoveg);
+        txfKincsVagyNemKincs.setText("");
+        txfKincsVagyNemKincs2.setText("");
+        txfKincsVagyNemKincs1.setText("");
+        btnElsoAjto.setSelected(false);
+        btnMasodikAjto.setSelected(false);
+        btnHarmadikAjto.setSelected(false);
+        btnCsere.setEnabled(true);
+        btnNemCsere.setEnabled(true);
     }
-    
-    public int kivalasztottKincs() {
-        if(btnElsoAjto.isSelected()){
-            kivalasztottIndex = 0;
-            // mivel nem radiobutton ezért toggle-zni kell, nehogy egyszerre többet válasszon.
-            btnHarmadikAjto.setEnabled(false);
-            btnMasodikAjto.setEnabled(false);
-            
-        }else if(btnMasodikAjto.isSelected()){
-            kivalasztottIndex = 1;
-            btnElsoAjto.setEnabled(false);
-            btnHarmadikAjto.setEnabled(false);
-            
-        }else if(btnHarmadikAjto.isSelected()){
-            kivalasztottIndex = 2;
-            btnElsoAjto.setEnabled(false);
-            btnMasodikAjto.setEnabled(false);
+
+    public void kivalasztottKiir(int ajtoSzama) {
+        jatekSzoveg += "Választásod: " + ajtoSzama + "\n"
+                + "Felfedem,\nhogy mi van az egyik ajtó mögött!\n"
+                + "Szeretnél cseréni?\n";
+        txtaJatek.setText(jatekSzoveg);
+    }
+
+    public void felfedezKiir(int ajtoSzama) {
+        switch (ajtoSzama) {
+            case 0:
+                txfKincsVagyNemKincs.setText("semmi");
+                break;
+            case 1:
+                txfKincsVagyNemKincs2.setText("semmi");
+                break;
+            case 2:
+                txfKincsVagyNemKincs1.setText("semmi");
+                break;
         }
-        
-        return kivalasztottIndex;
     }
     
+    public void ajtokMitRejtKiir(boolean[] ajtokMogott) {
+        txfKincsVagyNemKincs.setText(ajtokMogott[0] ? "kincs" : "semmi");
+        txfKincsVagyNemKincs2.setText(ajtokMogott[1] ? "kincs" : "semmi");
+        txfKincsVagyNemKincs1.setText(ajtokMogott[2] ? "kincs" : "semmi");
+    }
+
+    public void csereKiir(boolean csereDontes) {
+        if (csereDontes) {
+            jatekSzoveg += "Választásod: cserélek\n";
+            txtaJatek.setText(jatekSzoveg);
+        } else {
+            jatekSzoveg += "Választásod: nem cserélek\n";
+            txtaJatek.setText(jatekSzoveg);
+        }
+    }
+    
+    public void statKiir(int cserekSzama, int nyeresekSzama) {
+        txtaStatisztika1.setText("Nyerések száma: "+nyeresekSzama+"\n"
+                + "Cserék száma: "+cserekSzama);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,7 +112,7 @@ public class AjtokGUI extends javax.swing.JFrame {
         txfKincsVagyNemKincs2 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtaStatisztika1 = new javax.swing.JTextArea();
-        btnUjJatek = new javax.swing.JToggleButton();
+        btnUjJatek = new javax.swing.JButton();
 
         btnMasodikAjto1.setText("2");
 
@@ -70,26 +127,12 @@ public class AjtokGUI extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nezet/ajto.png"))); // NOI18N
 
         btnElsoAjto.setText("1");
-        btnElsoAjto.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btnElsoAjtoItemStateChanged(evt);
-            }
-        });
 
         btnMasodikAjto.setText("2");
-        btnMasodikAjto.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btnMasodikAjtoItemStateChanged(evt);
-            }
-        });
 
         btnHarmadikAjto.setText("3");
-        btnHarmadikAjto.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btnHarmadikAjtoItemStateChanged(evt);
-            }
-        });
 
+        txtaJatek.setEditable(false);
         txtaJatek.setColumns(20);
         txtaJatek.setRows(5);
         jScrollPane2.setViewportView(txtaJatek);
@@ -98,6 +141,16 @@ public class AjtokGUI extends javax.swing.JFrame {
 
         btnNemCsere.setText("nem cserélek");
 
+        txfKincsVagyNemKincs.setEditable(false);
+        txfKincsVagyNemKincs.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        txfKincsVagyNemKincs1.setEditable(false);
+        txfKincsVagyNemKincs1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        txfKincsVagyNemKincs2.setEditable(false);
+        txfKincsVagyNemKincs2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        txtaStatisztika1.setEditable(false);
         txtaStatisztika1.setColumns(20);
         txtaStatisztika1.setRows(5);
         jScrollPane3.setViewportView(txtaStatisztika1);
@@ -142,7 +195,7 @@ public class AjtokGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnNemCsere))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addGap(60, 60, 60)
                         .addComponent(btnUjJatek, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -194,21 +247,6 @@ public class AjtokGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnElsoAjtoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnElsoAjtoItemStateChanged
-        kivalasztottKincs();
-        jatekKiiras("Választásod: "+(kivalasztottIndex+1));
-    }//GEN-LAST:event_btnElsoAjtoItemStateChanged
-
-    private void btnMasodikAjtoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnMasodikAjtoItemStateChanged
-        kivalasztottKincs();
-        jatekKiiras("Választásod: "+(kivalasztottIndex+1));
-    }//GEN-LAST:event_btnMasodikAjtoItemStateChanged
-
-    private void btnHarmadikAjtoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnHarmadikAjtoItemStateChanged
-        kivalasztottKincs();
-        jatekKiiras("Választásod: "+(kivalasztottIndex+1));
-    }//GEN-LAST:event_btnHarmadikAjtoItemStateChanged
-
 //    AjtosJatek-ban hívódik a main
 //    public static void main(String args[]) {
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -247,7 +285,7 @@ public class AjtokGUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnMasodikAjto;
     private javax.swing.JToggleButton btnMasodikAjto1;
     private javax.swing.JButton btnNemCsere;
-    private javax.swing.JToggleButton btnUjJatek;
+    private javax.swing.JButton btnUjJatek;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
