@@ -198,11 +198,13 @@
         <Component class="javax.swing.JButton" name="btnCsere">
           <Properties>
             <Property name="text" type="java.lang.String" value="cser&#xe9;lek"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnNemCsere">
           <Properties>
             <Property name="text" type="java.lang.String" value="nem cser&#xe9;lek"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txfKincsVagyNemKincs">

@@ -6,10 +6,23 @@ import javax.swing.JToggleButton;
 public class AjtokGUI extends javax.swing.JFrame {
 
     private String jatekSzoveg;
+    private final JToggleButton[] ajtok;
 
     public AjtokGUI() {
         initComponents();
         jatekAlap();
+        this.ajtok = new JToggleButton[3];
+        this.setAjtok();
+    }
+
+    public JToggleButton[] getAjtok() {
+        return ajtok;
+    }
+    
+    private void setAjtok() {
+        ajtok[0] = getElsoAjto();
+        ajtok[1] = getMasodikAjto();
+        ajtok[2] = getHarmadikAjto();
     }
 
     public JToggleButton getElsoAjto() {
@@ -35,7 +48,7 @@ public class AjtokGUI extends javax.swing.JFrame {
     public JButton getUjJatek() {
         return btnUjJatek;
     }
-    
+
     public void jatekAlap() {
         jatekSzoveg = "Válassz egy ajtót!\n";
         txtaJatek.setText(jatekSzoveg);
@@ -49,10 +62,14 @@ public class AjtokGUI extends javax.swing.JFrame {
         btnNemCsere.setEnabled(true);
     }
 
-    public void kivalasztottKiir(int ajtoSzama) {
-        jatekSzoveg += "Választásod: " + ajtoSzama + "\n"
-                + "Felfedem,\nhogy mi van az egyik ajtó mögött!\n"
-                + "Szeretnél cseréni?\n";
+    public void kivalasztottKiir(int ajtoSzama, boolean allapot) {
+        if (!allapot) {
+            jatekSzoveg += "Választásod: " + ajtoSzama + "\n"
+                    + "Felfedem,\nhogy mi van az egyik ajtó mögött!\n"
+                    + "Szeretnél cseréni?\n";
+        } else {
+            jatekSzoveg += "Választásod: " + ajtoSzama + "\n";
+        }
         txtaJatek.setText(jatekSzoveg);
     }
 
@@ -69,7 +86,7 @@ public class AjtokGUI extends javax.swing.JFrame {
                 break;
         }
     }
-    
+
     public void ajtokMitRejtKiir(boolean[] ajtokMogott) {
         txfKincsVagyNemKincs.setText(ajtokMogott[0] ? "kincs" : "semmi");
         txfKincsVagyNemKincs2.setText(ajtokMogott[1] ? "kincs" : "semmi");
@@ -85,10 +102,10 @@ public class AjtokGUI extends javax.swing.JFrame {
             txtaJatek.setText(jatekSzoveg);
         }
     }
-    
+
     public void statKiir(int cserekSzama, int nyeresekSzama) {
-        txtaStatisztika1.setText("Nyerések száma: "+nyeresekSzama+"\n"
-                + "Cserék száma: "+cserekSzama);
+        txtaStatisztika1.setText("Nyerések száma: " + nyeresekSzama + "\n"
+                + "Cserék száma: " + cserekSzama);
     }
 
     @SuppressWarnings("unchecked")
@@ -138,8 +155,10 @@ public class AjtokGUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtaJatek);
 
         btnCsere.setText("cserélek");
+        btnCsere.setEnabled(false);
 
         btnNemCsere.setText("nem cserélek");
+        btnNemCsere.setEnabled(false);
 
         txfKincsVagyNemKincs.setEditable(false);
         txfKincsVagyNemKincs.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
